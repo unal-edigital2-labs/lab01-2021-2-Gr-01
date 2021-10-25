@@ -7,6 +7,8 @@ module BCDtoSSeg (BCD, SSeg);
 
 always @ ( * ) begin
   case (BCD)
+  //adsfasdf
+  //adsfsdf
     4'b0000: SSeg = 7'b1000000; // "0"  
 	4'b0001: SSeg = 7'b1111001; // "1" 
 	4'b0010: SSeg = 7'b0100100; // "2" 
