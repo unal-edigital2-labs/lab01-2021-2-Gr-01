@@ -19,19 +19,19 @@
 //
 //////////////////////////////////////////////////////////////////////////////////
 
-module sum1bcc (A, B, Ci,Cout,S);
+module sum1bcc (A, B, Ci, Cout, S);
 
-  input  A;
-  input  B;
-  input  Ci;
-  output Cout;
-  output S;
+  input  wire A;
+  input  wire B;
+  input  wire Ci;
+  output wire Cout;
+  output wire S;
 
   wire [1:0] st;
   assign S = st[0];
   assign Cout = st[1];
 
-  assign st  = 	A+B+Ci;
+  assign st = A + B + Ci;
  
   
 endmodule
