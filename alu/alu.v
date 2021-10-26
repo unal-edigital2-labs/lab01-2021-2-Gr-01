@@ -27,10 +27,10 @@ wire init_div;
 
 // 
 
-assign init_suma= init[0];
-assign init_resta=init[1];
-assign init_mult=init[2];
-assign init_div=init[3];
+assign init_suma = init[0];
+assign init_resta = init[1];
+assign init_mult = init[2];
+assign init_div = init[3];
 
 reg [15:0]int_bcd;
 
@@ -62,14 +62,19 @@ always @(*) begin
 end
 
 
-//instanciaci�n de los componnetes 
+//instanciación de los componnetes 
 
 sum4b sum(  .init(init_suma), 
             .xi({1'b0,portA}),
             .yi({1'b0,portB}),
             .sal(sal_suma));
             
-multiplicador mul ( .MR(portA),
+restador res(   .init(init_resta),
+                .rm({1'b0,portA}), 
+                .rs({1'b0,portB}), 
+                .sal(sal_resta));
+
+multiplicador mul(  .MR(portA),
                     .MD(portB),
                     .init(init_mult),
                     .clk(clk),
@@ -80,12 +85,5 @@ display dp( .num(int_bcd),
             .sseg(sseg),
             .an(an),
             .rst(rst));
-
-
-// adicone los dos bloques que hacen flata la resta y divisi�n
-
-
-
-
 
 endmodule
