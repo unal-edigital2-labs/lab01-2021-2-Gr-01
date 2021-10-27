@@ -80,10 +80,18 @@ multiplicador mul(  .MR(portA),
                     .clk(clk),
                     .pp(sal_mult));
                     
+divisor div(   .DV(portA), 
+                    .DS(portB), 
+                    .init(init_div), 
+                    .clk(clk),  
+                    .C(sal_div)
+                 );
+                    
 display dp( .num(int_bcd),
             .clk(clk),
             .sseg(sseg),
             .an(an),
             .rst(rst));
+           
 
 endmodule

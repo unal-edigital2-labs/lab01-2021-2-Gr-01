@@ -18,15 +18,14 @@
 // Additional Comments: 
 //
 //////////////////////////////////////////////////////////////////////////////////
-module multiplicador(  input wire[2:0] MR, 
-					   input wire [2:0] MD, 
-					   input wire init, 
-					   input wire clk,  
-					   output reg [5:0] pp, 
-					   output reg done
-                    );
-
-
+module multiplicador(   input wire[2:0] MR, 
+					                  input wire [2:0] MD, 
+					                  input wire init, 
+					                  input wire clk,  
+					                  output reg [5:0] pp, 
+					                  output reg done
+                                   );
+                                   
 reg sh;
 reg rst;
 reg add;

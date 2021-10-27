@@ -52,7 +52,7 @@ module testbench;
 		opcode = 0;
 		clk = 0;
 		rst = 1;
-		portA = 5;
+		portA = 6;
 		portB = 3;
 		
 		// Wait 100 ns for global reset to finish
