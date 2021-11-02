@@ -31,12 +31,27 @@ reg rst;
 reg add;
 reg [5:0] A;
 reg [2:0] B;
+reg initM=0;
+reg aux=0;
 wire z;
 
 reg [2:0] status = 0;
 
 // bloque comparador 
 assign z = (B == 0)? 1 : 0;
+
+always @(posedge clk) begin
+    if (init & aux)begin
+        initM = 1'b1;
+        aux = 0;
+    end else begin
+        initM = 1'b0;
+    end
+    
+    if (!init) begin
+        aux = 1;
+    end
+end
 
 
 //bloques de registros de desplazamiento para A y B
@@ -77,7 +92,7 @@ always @(posedge clk) begin
 	START: begin
 		sh = 0;
 		add = 0;
-		if (init) begin
+		if (initM) begin
 			status = CHECK;
 			done = 0;
 			rst = 1;

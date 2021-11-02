@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ps / 1ps
 
 ////////////////////////////////////////////////////////////////////////////////
 // Company: 
@@ -69,7 +69,6 @@ module testbench;
 		
 		#50 opcode = 3;
 		
-		#1000 opcode = 0;
 	end
    
 	always #1 clk = ~clk;

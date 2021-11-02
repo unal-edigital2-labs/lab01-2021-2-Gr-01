@@ -87,11 +87,12 @@ divisor div(   .DV(portA),
                     .C(sal_div)
                  );
                     
-display dp( .num(int_bcd),
-            .clk(clk),
-            .sseg(sseg),
-            .an(an),
-            .rst(rst));
+display dp(   .num(int_bcd),
+                    .clk(clk),
+                    .sseg(sseg),
+                    .an(an),
+                    .rst(rst)
+                );
            
 
 endmodule
