@@ -19,7 +19,7 @@ always @ ( * ) begin
     4'hb: SSeg = 7'b0000011;
     4'hc: SSeg = 7'b0100111;
     4'hd: SSeg = 7'b0100001;
-    4'he: SSeg = 7'b0000100;
+    4'he: SSeg = 7'b0000110;
     4'hf: SSeg = 7'b0001110;
     default:
         SSeg = 0;

@@ -1,6 +1,5 @@
 `timescale 1ns / 1ps
 
-
 module alu(
     input [2:0] portA,
     input [2:0] portB,
@@ -24,6 +23,10 @@ wire init_suma;
 wire init_resta;
 wire init_mult;
 wire init_div;
+
+//Declaración done de multiplicación y división
+wire doneM;
+wire doneD;
 
 // 
 
@@ -53,8 +56,8 @@ always @(*) begin
 	case(opcode) 
 		2'b00: int_bcd <={8'd0,sal_suma};
 		2'b01: int_bcd <={8'd0,sal_resta};
-		2'b10: int_bcd <={8'd0,sal_mult};
-		2'b11: int_bcd <={8'd0,sal_div};
+		2'b10: if(doneM) int_bcd <={8'd0,sal_mult};
+		2'b11: if(doneD) int_bcd <={8'd0,sal_div};
 	default:
 		int_bcd <= 16'd0;
 	endcase
@@ -78,13 +81,16 @@ multiplicador mul(  .MR(portA),
                     .MD(portB),
                     .init(init_mult),
                     .clk(clk),
-                    .pp(sal_mult));
+                    .pp(sal_mult),
+                    .done(doneM)
+                    );
                     
 divisor div(   .DV(portA), 
                     .DS(portB), 
                     .init(init_div), 
                     .clk(clk),  
-                    .C(sal_div)
+                    .C(sal_div),
+                    .done(doneD)
                  );
                     
 display dp(   .num(int_bcd),
